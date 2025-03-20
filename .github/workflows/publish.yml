@@ -6,46 +6,10 @@ on:
     tags:
     - 'v[0-9]+.[0-9]+.[0-9]+' # tag pattern on pub.dev: 'v{{version}'
 
+
 jobs:
     publish:
-        permissions:
-            id-token: write # Required for authentication using OIDC
-        runs-on: ubuntu-latest
-        # environment: pub.dev
-        steps:
-            - name: Print PUB_TOKEN (for testing only)
-              run: echo "PUB_TOKEN is set"
-              env:
-                PUB_TOKEN: ${{ secrets.PUB_TOKEN }}
-
-            - name: Checkout
-              uses: actions/checkout@main
-
-            - name: Setup Flutter
-              uses: subosito/flutter-action@v2
-              with:
-                channel: master
-                # flutter-version: '1.17.0'
-                # flutter-version-file: pubspec.yaml # path to pubspec.yaml
-            - run: flutter --version
-            - name: Check Dart version
-              run: dart --version
-              
-            - name: Install or Refresh dependency packages
-              run: flutter pub get && flutter pub outdated
-
-            # - name: 'Checkout'
-            #   uses: actions/checkout@main # required!
-            - name: Token check
-              uses: k-paxian/dart-package-publisher@master
-              with:
-                accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-                refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-                skipTests: true
-                force: true
-                
-            - name: Publish to pub.dev
-              run: flutter pub publish --force
-              env:
-                PUB_TOKEN: ${{ secrets.PUB_TOKEN }}
-        
+      uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
+      permissions:
+        id-token: write # Required for authentication using OIDC
+        pull-requests: write # Required for writing the pull request note

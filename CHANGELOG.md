@@ -6,3 +6,7 @@
 
 * bridge for android and ios
 * auto publish features
+
+## 0.0.3
+
+* export some widget type for flutter_dsbridge_annotation

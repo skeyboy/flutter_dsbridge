@@ -18,6 +18,10 @@ DSBridge for Flutter is based on Flutter official [webview_flutter](https://pub.
    dependencies:
      ...
      flutter_dsbridge: x.y.z
+   
+   dev_dependencies:
+     flutter_dsbridge_annotation: x.y.z
+
    ```
 
 ## Examples
@@ -32,7 +36,7 @@ export object as JavaScriptObject
 
 ```dart
 @DSBridge(enableDebug: true)
-class JsApi {
+class JsApi extends _$JsApi {
   @dsBridge()
   String testSyn(dynamic msg) {
     print('msg=$msg');
@@ -140,3 +144,5 @@ more examples are in the example demo . you can download to enjoy it.
 ## Finally
 
 If you like DSBridge for Flutter, please click star/like to let more people know it, Thanks!
+
+## Thanks for [dsbridge_flutter](https://github.com/gtbluesky/dsbridge_flutter)

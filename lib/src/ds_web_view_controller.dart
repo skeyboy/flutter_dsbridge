@@ -367,7 +367,7 @@ class DsWebViewController extends WebViewController {
     JavaScriptNamespaceInterface object, {
     String? namespace,
   }) {
-    namespace ??= '';
+    namespace ??= object.namespace ?? '';
     _javaScriptNamespaceInterfaces[namespace] = object;
   }
 
@@ -428,7 +428,7 @@ class InnerCompletionHandler extends CompletionHandler {
 class InnerJavaScriptNamespaceInterface extends JavaScriptNamespaceInterface {
   final DsWebViewController controller;
 
-  InnerJavaScriptNamespaceInterface(this.controller);
+  InnerJavaScriptNamespaceInterface(this.controller) : super(namespace: null);
 
   @override
   void register() {

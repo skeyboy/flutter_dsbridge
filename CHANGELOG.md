@@ -10,3 +10,7 @@
 ## 0.0.3
 
 * export some widget type for flutter_dsbridge_annotation
+
+## 0.0.4
+
+* add namespace support with jsobject

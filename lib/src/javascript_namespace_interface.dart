@@ -2,8 +2,9 @@ import 'package:flutter_dsbridge/src/inner/function_extension.dart';
 
 abstract class JavaScriptNamespaceInterface {
   var functionMap = <String, Function>{};
+  String? namespace;
 
-  JavaScriptNamespaceInterface() {
+  JavaScriptNamespaceInterface({this.namespace}) {
     register();
   }
 
